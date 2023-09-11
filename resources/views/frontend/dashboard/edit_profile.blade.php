@@ -83,16 +83,7 @@
             <label>Username</label>
             <input type="text" name="username" value="{{ $userData->username }}" >
         </div>
-        <div class="form-group">
-          <label for="formFile" class="form-label">Default file input example</label>
-<input class="form-control" name="photo" type="file" id="image">
-      </div>
-
-        <div class="form-group">
-          <label for="formFile" class="form-label"> </label>
-<img id="showImage"  src="{{ (!empty($userData->photo)) ? url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg') }}" alt="" style="width: 100px; height: 100px;"></a>
-      </div>
-
+       
         <div class="form-group">
             <label>Name</label>
             <input type="text" name="name" value="{{ $userData->name }}">
@@ -112,10 +103,16 @@
         </div>
 
 
-  <div class="form-group">
+        <div class="form-group">
             <label for="formFile" class="form-label">Default file input example</label>
-  <input class="form-control" name="photo" type="file" id="formFile">
+  <input class="form-control" name="photo" type="file" id="image">
         </div>
+  
+          <div class="form-group">
+            <label for="formFile" class="form-label"> </label>
+  <img id="showImage"  src="{{ (!empty($userData->photo)) ? url('images/user_images/'.$userData->photo) : url('images/no_image.jpg') }}" alt="" style="width: 100px; height: 100px;"></a>
+        </div>
+  
 
 
         <div class="form-group message-btn">
