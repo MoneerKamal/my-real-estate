@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::post('/user/profile/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
-
+Route::post('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
     Route::get('/user/profile', [UserController::class, 'UserProfile'])->name('user.profile');
 });
