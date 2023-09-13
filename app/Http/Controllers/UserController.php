@@ -59,14 +59,19 @@ class UserController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect('/login');
+        $notification = array(
+            'message' => 'User Logout Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect('/login')->with($notification);
     }
 
-    public function UserChangePassword(){
+    public function UserChangePassword()
+    {
         return view('frontend.dashboard.change_password');
     }
-     public function UserPasswordUpdate(Request $request){
+    public function UserPasswordUpdate(Request $request)
+    {
 
         // Validation 
         $request->validate([
@@ -79,12 +84,12 @@ class UserController extends Controller
 
         if (!Hash::check($request->old_password, auth::user()->password)) {
 
-           $notification = array(
-            'message' => 'Old Password Does not Match!',
-            'alert-type' => 'error'
-        );
+            $notification = array(
+                'message' => 'Old Password Does not Match!',
+                'alert-type' => 'error'
+            );
 
-        return back()->with($notification);
+            return back()->with($notification);
         }
 
         /// Update The New Password 
@@ -94,12 +99,11 @@ class UserController extends Controller
 
         ]);
 
-         $notification = array(
+        $notification = array(
             'message' => 'Password Change Successfully',
             'alert-type' => 'success'
         );
 
-        return back()->with($notification); 
-
-     }
+        return back()->with($notification);
+    }
 }
