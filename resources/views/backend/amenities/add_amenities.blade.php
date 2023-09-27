@@ -14,7 +14,7 @@
 
 			<h6 class="card-title">Add Amenities   </h6>
 
-			<form method="POST" action="{{ route('store.amenitie') }}" class="forms-sample">
+			<form method="POST" action="{{ route('store.amenitie') }}" id="myForm" class="forms-sample">
 				@csrf
 
 
