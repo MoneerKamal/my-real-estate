@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Amenities;
 use App\Models\PropertyType;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyTypeController extends Controller
 {
@@ -52,7 +53,12 @@ class PropertyTypeController extends Controller
     {
 
         $pid = $request->id;
+        $request->validate([
 
+            'type_icon' => 'required',
+            'type_name' => ['required', 'max:200', 'unique:property_types,type_name,' . $pid]
+
+        ]);
         PropertyType::findOrFail($pid)->update([
 
             'type_name' => $request->type_name,
@@ -65,5 +71,32 @@ class PropertyTypeController extends Controller
         );
 
         return redirect()->route('all.type')->with($notification);
+    }
+    public function DeleteType($id)
+    {
+
+        PropertyType::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Property Type Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    ///////////// Amenitites All Method //////////////
+
+
+    public function AllAmenitie()
+    {
+
+        $amenities = Amenities::latest()->get();
+        return view('backend.amenities.all_amenities', compact('amenities'));
+    }
+
+    public function AddAmenitie()
+    {
+        return view('backend.amenities.add_amenities');
     }
 }
