@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 
 /*
@@ -91,5 +92,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(PropertyController::class)->group(function () {
 
         Route::get('/all/property', 'AllProperty')->name('all.property');
+        Route::get('/add/property', 'AddProperty')->name('add.property');
     });
 });
