@@ -174,7 +174,7 @@
                 <select name="ptype_id" class="form-select" id="exampleFormControlSelect1">
                 <option selected="" disabled="">Select Type</option>
                @foreach($propertytype as $ptype)
-                <option value="{{ $ptype->id }}">{{ $ptype->type_name }}</option>
+            <option value="{{ $ptype->id }}" {{ $ptype->id == $property->ptype_id ? 'selected' : '' }}>{{ $ptype->type_name }}</option>
                @endforeach
             </select>
             </div>
