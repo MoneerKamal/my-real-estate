@@ -95,7 +95,7 @@ class PropertyController extends Controller
 
             'property_id' => $property_id,
             'photo_name' => $uploadPath,
-            'property_id' => Carbon::now(), 
+            'created_at' => Carbon::now(), 
 
         ]); 
         } // End Foreach
