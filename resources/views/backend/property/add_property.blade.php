@@ -237,7 +237,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label">Short Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                      <textarea name="short_descp" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 
                                     </div>
                                 </div><!-- Col -->
@@ -248,7 +248,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Long Description</label>
 
-                                        <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+                                        <textarea name="long_descp" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 
                                     </div>
                                 </div><!-- Col -->
