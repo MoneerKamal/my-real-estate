@@ -340,7 +340,7 @@
         <h6 class="card-title">Edit Multi Image  </h6>
 
 
-    <form method="post" action="{{ route('update.property.thambnail') }}" id="myForm" enctype="multipart/form-data">
+    <form method="post" action="{{ route('update.property.multiimage') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
 
 
