@@ -366,7 +366,7 @@
             </td> 
 
             <td> 
-            <input type="file" class="form-group" name="multi_img">
+            <input type="file" class="form-control" name="multi_img[{{ $img->id }}]">
             </td>
             <td>
     <input type="submit" class="btn btn-primary px-4" value="Update Image" >
