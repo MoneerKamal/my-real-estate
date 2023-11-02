@@ -117,5 +117,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/active/property', 'ActiveProperty')->name('active.property');
 
 });
+
+    // Agent All Route from admin 
+Route::controller(AdminController::class)->group(function(){
+
+     Route::get('/all/agent', 'AllAgent')->name('all.agent'); 
+
+
+});
+    
     });
 });
