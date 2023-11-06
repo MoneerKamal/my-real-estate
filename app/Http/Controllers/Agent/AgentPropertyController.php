@@ -14,7 +14,8 @@ use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use DB
+use DB;
+use App\Models\PackagePlan;
 class AgentPropertyController extends Controller
 {
     public function AgentAllProperty(){
@@ -34,7 +35,7 @@ class AgentPropertyController extends Controller
         $pcount = $property->credit;
         // dd($pcount);
 
-        if ($pcount == 1) {
+        if ($pcount == 1 || $pcount == 7) {
            return redirect()->route('buy.package');
         }else{
 
@@ -408,6 +409,32 @@ public function BuyBusinessPlan(){
     }// End Method  
 
 public function StoreBusinessPlan(Request $request){
+     $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
+
+      PackagePlan::insert([
+
+        'user_id' => $id,
+        'package_name' => 'Business',
+        'package_credits' => '3',
+        'invoice' => 'ERS'.mt_rand(10000000,99999999),
+        'package_amount' => '20',
+        'created_at' => Carbon::now(), 
+      ]);
+
+        User::where('id',$id)->update([
+            'credit' => DB::raw('3 + '.$nid),
+        ]);
+
+
+
+       $notification = array(
+            'message' => 'You have purchase Basic Package Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('agent.all.property')->with($notification); 
 
     }
 
