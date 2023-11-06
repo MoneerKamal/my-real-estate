@@ -162,5 +162,12 @@ Route::controller(AgentPropertyController::class)->group(function(){
 
 
 });
+    // Agent Buy Package Route from admin 
+Route::controller(AgentPropertyController::class)->group(function(){
+
+     Route::get('/buy/package', 'BuyPackage')->name('buy.package');
+
+
+});
 
 }); // End Group Agent Middleware
