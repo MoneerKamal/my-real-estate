@@ -399,5 +399,11 @@ public function AgentUpdatePropertyThambnail(Request $request){
 
         return view('agent.package.buy_package');
     }
+public function BuyBusinessPlan(){
+
+        $id = Auth::user()->id;
+        return view('agent.package.business_plan',compact('id'));
+
+    }// End Method  
 
 } 
