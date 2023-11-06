@@ -29,8 +29,18 @@ class AgentPropertyController extends Controller
 
         $propertytype = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
+   $id = Auth::user()->id;
+        $property = User::where('role','agent')->where('id',$id)->first();
+        $pcount = $property->credit;
+        // dd($pcount);
 
-        return view('agent.property.add_property',compact('propertytype','amenities'));
+        if ($pcount == 1) {
+           return redirect()->route('buy.package');
+        }else{
+
+            return view('agent.property.add_property',compact('propertytype','amenities'));
+        }
+       
 
     }// End Method 
 
